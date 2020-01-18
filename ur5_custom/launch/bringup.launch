@@ -1,0 +1,39 @@
+<launch>
+  
+  <arg name="limited" default="true"/>
+  <arg name="open_rviz" default="true"/>
+  <arg name="start_d435" default="true"/>
+  <arg name="start_gripper" default="false"/>
+  
+
+  <!-- Make connection with the arm -->
+  <include file="$(find ur_modern_driver)/launch/ur5_bringup.launch">
+    <arg name="robot_ip" value="192.168.3.56"/>
+    <arg name="limited" value="true"/>
+    <arg name="prefix" value="ur_arm_"/> <!-- arm-->
+  </include>
+
+  <!-- Run Planner -->
+  <include file="$(find ur5_custom)/launch/ur5_moveit_planning_execution.launch"/>
+
+  <!-- Start Rviz -->
+  <group if="$(arg open_rviz)">
+    <include file="$(find ur5_moveit_config)/launch/moveit_rviz.launch">
+      <arg name="config" value="true"/>
+    </include>
+  </group>
+
+  <!-- start D435-->
+  <group if="$(arg start_d435)">
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+      <arg name="filters" value="pointcloud"/>
+    </include> 
+    <!-- Set Link from Arm to Cam-->
+    <node pkg="tf" type="static_transform_publisher" name="camer_link" args="0.125 0 0 0 0 0 ur_arm_ee_link camera_link 100"/>
+  </group>
+
+  <!-- start gripper connection-->
+  <group if="$(arg start_gripper)">
+    <node pkg="rosserial_python" type="serial_node.py" name="gripper" args=""/>
+  </group>
+</launch>

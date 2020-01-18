@@ -1,0 +1,28 @@
+<launch>
+  
+  <arg name="limited" default="true"/>
+  <arg name="servoj_time" default="0.008" />
+  <arg name="start_rviz" default="true"/>
+
+  <!-- Run Planner -->
+  <include file="$(find ur5_custom)/launch/ur5_moveit_planning_execution.launch"/>
+  <!--
+    <arg name="load_robot_description" value="true"/>
+  </include>-->
+
+  <!-- Make connection with the arm -->
+  <include file="$(find ur_modern_driver)/launch/ur5_bringup.launch">
+    <arg name="robot_ip" value="192.168.3.56"/>
+    <arg name="limited" value="true"/>
+    <arg name="prefix" value="ur_arm_"/> <!-- arm-->
+    <param name="servoj_time" type="double" value="$(arg servoj_time)" /> <!-- dont know what this does-->
+  </include>
+
+  <!-- Start Rviz -->
+  <group if="$(arg start_rviz)">
+    <include file="$(find ur5_custom)/launch/moveit_rviz.launch">
+      <arg name="config" value="true"/>
+    </include>
+  </group>
+
+</launch>

@@ -1,0 +1,38 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/scouttman/catkin_ws/devel/include",
+                "/opt/ros/kinetic/include",
+                "/home/scouttman/catkin_ws/src/apriltags2_ros/apriltags2/include",
+                "/home/scouttman/catkin_ws/src/apriltags2_ros/apriltags2_ros/include",
+                "/home/scouttman/catkin_ws/src/blob_tools/blob/include",
+                "/home/scouttman/catkin_ws/src/common-sensors/common_sensors/include",
+                "/home/scouttman/catkin_ws/src/ddynamic_reconfigure/include",
+                "/home/scouttman/catkin_ws/src/imu_tools/imu_complementary_filter/include",
+                "/home/scouttman/catkin_ws/src/imu_tools/imu_filter_madgwick/include",
+                "/home/scouttman/catkin_ws/src/kindr/include",
+                "/home/scouttman/catkin_ws/src/iai_kinect2/kinect2_registration/include",
+                "/home/scouttman/catkin_ws/src/realsense-ros/realsense2_camera/include",
+                "/home/scouttman/catkin_ws/src/simple_box_detector/include",
+                "/home/scouttman/catkin_ws/src/turtlebot3_simulations/turtlebot3_fake/include",
+                "/home/scouttman/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/include",
+                "/home/scouttman/catkin_ws/src/turtlebot3/turtlebot3_slam/include",
+                "/home/scouttman/catkin_ws/src/turtlebot_exploration_3d/include",
+                "/home/scouttman/catkin_ws/src/universal_robot/ur_kinematics/include",
+                "/home/scouttman/catkin_ws/src/ur_modern_driver/include",
+                "/usr/include"
+            ],
+            "name": "Linux",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/clang-5.0",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

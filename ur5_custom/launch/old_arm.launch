@@ -1,0 +1,26 @@
+<launch>
+  <arg name="limited" default="true"/>
+  <arg name="open_rviz" default="true"/>
+  <arg name="start_d435" default="true"/>
+  <arg name="start_gripper" default="true"/>
+  
+
+  <!-- Make connection with the arm -->
+  <include file="$(find ur_modern_driver)/launch/ur5_bringup.launch">
+    <arg name="robot_ip" value="192.168.3.56"/>
+    <arg name="limited" value="true"/>
+    <arg name="prefix" value=""/> <!-- arm-->
+  </include>
+
+  <!-- Run Planner -->
+  <include file="$(find ur5_moveit_config)/launch/ur5_moveit_planning_execution.launch">
+  </include>
+
+  <!-- Start Rviz -->
+  <group if="$(arg open_rviz)">
+    <include file="$(find ur5_moveit_config)/launch/moveit_rviz.launch">
+      <arg name="config" value="true"/>
+    </include>
+  </group>
+
+</launch>
